@@ -1109,20 +1109,16 @@ body{
 }
 .cat {
     position: absolute;
-    /* Căn giữa tuyệt đối theo tâm vòng tròn */
-    top: 50%;
-    left: 50%;
+    top: 50%; /* Căn giữa dọc  */
+    left: 50%; /* Căn giữa ngang  */
     transform: translate(-50%, -50%) scale(0); 
     opacity: 0;
     z-index: 10;
-    width: 180px; /* Độ rộng khung chứa con ngựa */
+    width: 160px; /* Kích thước con ngựa */
     cursor: pointer;
-    /* Animation hiện ra sau 4.2 giây theo đúng timeline của bạn [cite: 17] */
-    animation: scaleCat 1s 4.2s forwards;
     transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Hiện ra sớm hơn (sau 1.5s) và giữ lại mãi mãi (forwards) */
+    animation: scaleCat 1s 1.5s forwards; 
 }
 
 @keyframes scaleCat {
