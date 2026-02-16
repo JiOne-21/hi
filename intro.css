@@ -1109,16 +1109,17 @@ body{
 }
 .cat {
     position: absolute;
+    /* Căn giữa tuyệt đối theo tâm vòng tròn */
     top: 50%;
     left: 50%;
-    opacity: 0;
-    /* Căn giữa tuyệt đối và thu nhỏ về 0 để bắt đầu hiệu ứng */
     transform: translate(-50%, -50%) scale(0); 
+    opacity: 0;
     z-index: 10;
-    width: 200px; /* Tăng độ rộng khung chứa để ngựa không bị mất chân/đuôi */
-    transition: 0.5s;
+    width: 180px; /* Độ rộng khung chứa con ngựa */
     cursor: pointer;
+    /* Animation hiện ra sau 4.2 giây theo đúng timeline của bạn [cite: 17] */
     animation: scaleCat 1s 4.2s forwards;
+    transition: 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1136,17 +1137,15 @@ body{
 }
 
 .cat:hover {
-    /* Hiệu ứng hào quang khi di chuột vào con ngựa */
-    filter: drop-shadow(0 0 25px rgba(255, 221, 0, 0.8));
+    /* Hiệu ứng hào quang vàng khi di chuột vào [cite: 45] */
+    filter: drop-shadow(0 0 20px rgba(255, 221, 0, 0.9));
 }
 
 .cat img {
-    width: 100%; /* Để ảnh tự co dãn theo khung .cat */
+    width: 100%; /* Ảnh sẽ tự khớp theo chiều rộng 180px của .cat */
     height: auto;
-    /* Loại bỏ nền trắng nếu ảnh của bạn có nền trắng tinh */
-    mix-blend-mode: multiply; 
-    /* Đảm bảo ảnh nằm gọn trong vòng tròn, không cần dùng margin-top âm nếu đã translate -50% */
     display: block;
+    /* Không cần mix-blend-mode nữa vì ảnh đã trong suốt */
 }
 .box-rim{
     position: absolute;
