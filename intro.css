@@ -1107,40 +1107,46 @@ body{
     filter: blur(8px);
     z-index: -1;
 }
-.cat{
+.cat {
     position: absolute;
     top: 50%;
     left: 50%;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0); /* Đưa vào chính giữa tâm */
+    /* Căn giữa tuyệt đối và thu nhỏ về 0 để bắt đầu hiệu ứng */
+    transform: translate(-50%, -50%) scale(0); 
     z-index: 10;
-    width: 150px; /* Điều chỉnh kích thước cho vừa vòng tròn */
-}
-    transition: .5s;
+    width: 200px; /* Tăng độ rộng khung chứa để ngựa không bị mất chân/đuôi */
+    transition: 0.5s;
     cursor: pointer;
     animation: scaleCat 1s 4.2s forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-@keyframes scaleCat{
-    0%{
+
+@keyframes scaleCat {
+    0% {
         opacity: 0;
-        top: 50%;
-        left: 50%;
         transform: translate(-50%, -50%) scale(0);
     }
-    100%{
+    100% {
         opacity: 1;
-        top: 50%;
-        left: 50%;
         transform: translate(-50%, -50%) scale(1);
     }
 }
-.cat:hover{
-    filter: drop-shadow(0 0 25px rgb(255, 255, 0));
+
+.cat:hover {
+    /* Hiệu ứng hào quang khi di chuột vào con ngựa */
+    filter: drop-shadow(0 0 25px rgba(255, 221, 0, 0.8));
 }
-.cat img{
-    width: 190px;
-    margin-top: -5rem;
-    mix-blend-mode: multiply;
+
+.cat img {
+    width: 100%; /* Để ảnh tự co dãn theo khung .cat */
+    height: auto;
+    /* Loại bỏ nền trắng nếu ảnh của bạn có nền trắng tinh */
+    mix-blend-mode: multiply; 
+    /* Đảm bảo ảnh nằm gọn trong vòng tròn, không cần dùng margin-top âm nếu đã translate -50% */
+    display: block;
 }
 .box-rim{
     position: absolute;
