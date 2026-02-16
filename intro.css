@@ -1112,8 +1112,10 @@ body{
     top: 50%;
     left: 50%;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    z-index: 1000;
+    transform: translate(-50%, -50%) scale(0); /* Đưa vào chính giữa tâm */
+    z-index: 10;
+    width: 150px; /* Điều chỉnh kích thước cho vừa vòng tròn */
+}
     transition: .5s;
     cursor: pointer;
     animation: scaleCat 1s 4.2s forwards;
@@ -1138,6 +1140,7 @@ body{
 .cat img{
     width: 190px;
     margin-top: -5rem;
+    mix-blend-mode: multiply;
 }
 .box-rim{
     position: absolute;
