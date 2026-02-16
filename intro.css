@@ -1109,39 +1109,45 @@ body{
 }
 .cat {
     position: absolute;
-    top: 50%; /* Căn giữa dọc  */
-    left: 50%; /* Căn giữa ngang  */
-    transform: translate(-50%, -50%) scale(0); 
-    opacity: 0;
+    top: 50%; /* Căn giữa dọc tâm vòng tròn  */
+    left: 50%; /* Căn giữa ngang tâm vòng tròn  */
     z-index: 10;
-    width: 160px; /* Kích thước con ngựa */
+    width: 170px; /* Tăng kích thước để nhìn rõ hơn  */
+    
+    /* Trạng thái ban đầu: Ẩn hoàn toàn */
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    
+    /* Animation: Hiện ra sau 4.2 giây (theo timeline của bạn)  */
+    /* Thay đổi 4.2s thành số nhỏ hơn (ví dụ 1s) nếu muốn hiện sớm hơn */
+    animation: showHorse 1.2s 4.2s forwards; 
+    
+    transition: filter 0.5s;
     cursor: pointer;
-    transition: 0.5s;
-    /* Hiện ra sớm hơn (sau 1.5s) và giữ lại mãi mãi (forwards) */
-    animation: scaleCat 1s 1.5s forwards; 
 }
 
-@keyframes scaleCat {
+/* Hiệu ứng hiện hình rõ nét */
+@keyframes showHorse {
     0% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);
     }
     100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        opacity: 1; /* Rõ 100%  */
+        transform: translate(-50%, -50%) scale(1); /* To rõ trong vòng tròn  */
     }
 }
 
-.cat:hover {
-    /* Hiệu ứng hào quang vàng khi di chuột vào [cite: 45] */
-    filter: drop-shadow(0 0 20px rgba(255, 221, 0, 0.9));
-}
-
 .cat img {
-    width: 100%; /* Ảnh sẽ tự khớp theo chiều rộng 180px của .cat */
+    width: 100%;
     height: auto;
     display: block;
-    /* Không cần mix-blend-mode nữa vì ảnh đã trong suốt */
+    /* Nếu ảnh vẫn mờ do hòa trộn, hãy thử xóa dòng mix-blend-mode  */
+    mix-blend-mode: multiply; 
+}
+
+.cat:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 0, 0.9));
 }
 .box-rim{
     position: absolute;
